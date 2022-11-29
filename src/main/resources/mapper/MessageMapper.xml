@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbz.boot.mapper.MessageMapper">
+
+    <select id="getMessages" resultType="com.zbz.boot.bean.Message">
+        select * from message where type=#{type}
+    </select>
+
+    <insert id="insertMessages">
+        insert into message(title,link,type) values(#{title},#{link},#{type});
+    </insert>
+    <update id="updateMessages">
+        update  message set title=#{title},link=#{link},type=#{type}where id =#{id}
+
+    </update>
+    <delete id="deleteMessages" >
+        delete  from message  where  id =#{id}
+    </delete>
+</mapper>

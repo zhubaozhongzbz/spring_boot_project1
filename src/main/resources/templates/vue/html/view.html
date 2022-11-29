@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+<div id ="root">
+    <h1>${view}</h1>
+</div>
+<script>
+   var view=[[${view}]];
+   console.log(view);
+    const vm=Vue.createApp({
+        data(){
+
+        }
+    });
+    vm.mount("#root");
+
+</script>
+
+</body>
+</html>

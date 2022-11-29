@@ -1,0 +1,92 @@
+person:
+  userName: zhangsan
+  boss: false
+  birth: 2019/12/12 20:12:33
+  age: 18
+  pet:
+    name: tomcat
+    weight: 23.4
+  interests: [篮球,游泳]
+  animal:
+    - jerry
+    - mario
+  score:
+    english:
+      first: 30
+      second: 40
+      third: 50
+    math: [131,140,148]
+    chinese: {first: 128,second: 136}
+  salarys: [3999,4999.98,5999.99]
+#WebMvcProperties
+spring:
+  mvc:
+   # static-path-pattern: /res/**
+
+    # http://localhost:8080/success?format=json
+    contentnegotiation:
+      favor-parameter: true
+
+ # web:
+  #  resources:
+      #classpath:后沒有空格
+     # static-locations: [classpath:/test1/]
+#mysql 配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: zbz
+    url: jdbc:mysql://192.168.208.128:3306/zbz_database?characterEncoding=UTF-8&useSSL=false
+
+    druid:
+      aop-patterns: com.atguigu.admin.*  #监控SpringBean
+      filters: stat,wall     # 底层开启功能，stat（sql监控），wall（防火墙）
+
+      stat-view-servlet: # 配置监控页功能
+        enabled: true
+        login-username: zbz
+        login-password: zbz
+        resetEnable: false
+
+      web-stat-filter: # 监控web
+        enabled: true
+        urlPattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+
+
+      filter:
+        stat: # 对上面filters里面的stat的详细配置
+          slow-sql-millis: 1000
+          logSlowSql: true
+          enabled: true
+        wall:
+          enabled: true
+          config:
+            drop-table-allow: false
+
+  redis:
+    #   url: redis://lfy:Lfy123456@r-bp1nc7reqesxisgxpipd.redis.rds.aliyuncs.com:6379
+
+    host: 192.168.208.128
+    port: 6379
+    password:
+
+
+    client-type:
+#    jedis:
+#      pool:
+#        max-active: 10
+      lettuce:
+        pool:
+          max-active: 10
+          min-idle: 5
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+    # 可以不写全局配置文件，所有全局配置文件的配置都放在configuration配置项中了。
+    # config-location: classpath:mybatis/mybatis-config.xml
+   # configuration:
+    #  map-underscore-to-camel-case: true
+
+
+
